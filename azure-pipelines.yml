@@ -4,22 +4,11 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xcode
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: 'macos-latest'
 
 steps:
-- task: CocoaPods@0
-  inputs:
-    forceRepoUpdate: true
-
-- task: Xcode@5
-  inputs:
-    actions: 'clean build'
-    configuration: 'Release'
-    sdk: 'iphoneos'
-    xcWorkspacePath: '*.xcworkspace'
-    scheme: 'sampleapp-ios-swift'
-    packageApp: false
-    publishJUnitResults: true
+- script: |
+    uname -a
